@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
 import styled from 'styled-components';
+
+import LinkButton from './LinkButton';
 
 const Title = styled.h1`
   color: ${props => props.special ? "red" : "palevioletred"};
@@ -17,12 +17,10 @@ const FancyTitle = styled(Title)`
 const Wrapper = styled.section`
   padding: 4em;
   background: papayawhip;
+  width: 80%;
+  margin: 20px auto;
 `;
 
-const StyledLink = styled(Link)`  // styling react's Link class
-  color: black;
-  font-weight: bold;
-`;
 const Input = styled.input`
   padding: 0.5em;
   margin: 0.5em;
@@ -45,10 +43,11 @@ class BasicsDemo extends Component {
             <FancyTitle special>Extended and using Props</FancyTitle>
           </div>
           <div>
+            <Title special>Passing HTML Props</Title>
             <Input defaultValue="@probablyup" type="text" />
             <Input defaultValue="@geelen" type="text" inputColor="rebeccapurple" />  
           </div>        
-          <StyledLink to="/">Back to Menu with Style!</StyledLink> 
+          <LinkButton to="/">Back to Menu</LinkButton> 
         </Wrapper>    
     );
   }
