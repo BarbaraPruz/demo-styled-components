@@ -19,11 +19,16 @@ const ThemedButton = styled.button`
   padding: 0.25em 1em;
   border-radius: 3px;
 
-  /* Color the border and text with theme.main */
-  color: ${props => props.theme.main};
-  border: 2px solid ${props => props.theme.main};
+  /* Color the border and text with theme.btn */
+  color: ${props => props.theme.fore_primary};
+  background-color: ${props => props.theme.back_secondary}
+  border: 2px solid ${props => props.theme.fore_primary};
 `;
 
+const ThemedDiv = styled.div`
+  color: ${props => props.theme.fore_primary};
+  background-color: ${props => props.theme.back_primary};
+`;
 const TP = styled.p`
   color: white;
 `;
@@ -34,9 +39,9 @@ class ThemesDemo extends Component {
   // normally, theme details would be global. But for demonstrating the "themed div"
   // the theme definitions are kept in the Demo's state.
   THEMES = [
-    { main: "mediumseagreen" },
-    { main: "brown" },  
-    { main: "red"}
+    { back_primary: "mediumseagreen", back_secondary:"white", fore_primary: "black" },
+    { back_primary: "blue", back_secondary:"white", fore_primary: "orange" },  
+    { back_primary: "red", back_secondary:"white", fore_primary: "blue"}
   ];
 
   state = {
@@ -57,13 +62,12 @@ class ThemesDemo extends Component {
           <button onClick={this.handleChangeTheme}>Change Theme</button>
           <LinkButton to="/">Home</LinkButton>            
           <ThemeProvider theme={this.THEMES[this.state.themeId]}>
-          <div>
-          <h1>Themed Div</h1>
-          <TP>watch me change colors</TP>  
-          <ThemedButton>Themed</ThemedButton>
-          </div>       
-          </ThemeProvider>   
-          <LinkButton to="/">Home</LinkButton>      
+            <ThemedDiv>
+              <h1>Themed Div</h1>
+              <TP>watch me change colors</TP>  
+              <ThemedButton>Themed</ThemedButton>
+            </ThemedDiv>       
+          </ThemeProvider>    
         </DemoContainer>    
     );
   }
